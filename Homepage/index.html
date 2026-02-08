@@ -6,6 +6,52 @@
   <title>CeMoQu – Ataxia Diagnostic Suite</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
+    .gh-patient-btn {
+  background: transparent;
+  border: 1px solid rgba(148,163,184,0.25);
+  color: var(--muted);
+  font-size: 14px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+.gh-patient-btn:hover {
+  color: var(--text);
+  border-color: rgba(148,163,184,0.5);
+}
+
+dialog.patient-dialog {
+  max-width: 520px;
+  border: 1px solid rgba(148,163,184,0.2);
+  border-radius: 16px;
+  padding: 20px;
+  background: linear-gradient(145deg, rgba(15,23,42,0.98), rgba(15,23,42,0.94));
+  color: var(--text);
+  box-shadow: 0 30px 90px rgba(0,0,0,0.8);
+}
+
+dialog.patient-dialog::backdrop {
+  background: rgba(2,6,23,0.6);
+  backdrop-filter: blur(4px);
+}
+
+.patient-dialog h2 {
+  margin-top: 0;
+  font-size: 18px;
+}
+
+.patient-dialog p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.patient-dialog .actions {
+  margin-top: 16px;
+  display: flex;
+  justify-content: flex-end;
+}
+
     :root{
       --bg:#020617;
       --panel:#02091b;
@@ -141,7 +187,11 @@
             <a href="index2.html">Home</a>
             <a href="past_results/index.html">Past Results</a>
             <a href="help/index.html">Help</a>
+            <button class="gh-patient-btn" onclick="document.getElementById('patient-dialog').showModal()">
+                Patient Info
+            </button>
         </div>
+
     </nav>
   <div class="shell">
     <header>
@@ -359,5 +409,23 @@
       // you can add event listeners to test links and set a flag. For now leave visible but optional.
     })();
   </script>
+  <dialog id="patient-dialog" class="patient-dialog">
+  <h2>Patient Information</h2>
+  <p>
+    CeMoQu is a research and screening tool intended for educational and investigational use only.
+    It does not provide medical diagnosis, treatment, or clinical decision support.
+  </p>
+  <p>
+    All data processing occurs locally in the browser. No information is transmitted or stored remotely
+    unless explicitly downloaded by the user.
+  </p>
+
+  <div class="actions">
+    <button class="btn ghost" onclick="document.getElementById('patient-dialog').close()">
+      Close
+    </button>
+  </div>
+</dialog>
+
 </body>
 </html>
